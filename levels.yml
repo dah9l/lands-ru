@@ -1,0 +1,471 @@
+# In this file you can edit/add default land and nation levels.
+# Please note that each config section (level section) name and level name must be unique.
+# You must insert valid YAML format. To verify your format, you can paste the content of this file here: https://yaml-online-parser.appspot.com
+
+# Default land and nation levels. You can also add your own levels.
+# The order of the levels is ascending (lowest level -> highest).
+# This file can not be reloaded via /lands reload.
+
+general:
+  # If enabled, lands and nations won't downgrade, if they no longer meet their current level requirements.
+  keep-level: false
+
+land:
+  # Включить уровни городов?
+  enabled: true
+  # Здесь вы можете редактировать существующие или добавлять новые уровни.
+  levels:
+    1:
+      # Установить название уровня.
+      title: 'Поселение'
+      # Эти значения активны только если город не является членом какого-либо государства.
+      # Атрибуты уровня будут применяться поверх текущих значений города или государства.
+      attributes:
+        # Атрибут chunks добавляет или убирает (= отрицательное значение) чанки городу. Это означает, что город может занять больше (или меньше) чанков с помощью /claim.
+        chunks:
+          description: '&7{value} участков'
+          value: 0
+        # Атрибут upkeep увеличивает или уменьшает (= отрицательное значение) затраты на содержание на заданное значение.
+        # Этот атрибут не активен, если город является частью государства.
+        upkeep:
+          description: '&7{value}% затрат на содержание'
+          # Увеличение или уменьшение в процентах. Установка значения 5 увеличит содержание на 5 процентов в общем (не за чанк).
+          value: 0
+    2:
+      title: 'Деревня'
+      requirements:
+        # Требуемое количество жителей для присвоения этого уровня.
+        members:
+          required: 4
+          title: 'Доверять {req} игрокам'
+          description:
+            - '&7Доверяйте {req} игрокам в этом городе.'
+            - '&7Команда: &e/lands trust'
+        # Требуемое количество чанков для присвоения этого уровня.
+        chunks:
+          required: 0
+          title: 'Занять {req} чанков'
+          description:
+            - '&7Займите {req} чанков для этого города.'
+            - '&7Команда: &e/claim'
+        # Требуемый баланс банка для присвоения этого уровня (/lands balance).
+        balance:
+          required: 7500
+          title: 'Баланс ${req}'
+          description:
+            - '&7Имейте ${req} на счету банка этого города.'
+            - '&7Команда: &e/lands deposit'
+        # Плагин: https://www.spigotmc.org/resources/67627
+        betterfarming:
+          farms:
+            required: 1
+            title: '{req} улучшаемая ферма'
+            description:
+              - '&7Имейте {req} улучшаемую ферму в вашем городе.'
+              - '&7Команда: &e/farm get'
+        # Плагин: https://www.spigotmc.org/resources/69201
+        upgradeablehoppers:
+          hoppers:
+            required: 5
+            title: '{req} улучшаемых воронок'
+            description:
+              - '&7Имейте {req} улучшаемых воронок в вашем городе.'
+              - '&7Команда: &e/hopper get'
+        # Плагин: https://www.spigotmc.org/resources/77717
+        upgradeablespawners:
+          spawners:
+            required: 3
+            title: '{req} улучшаемых спавнеров'
+            description:
+              - '&7Имейте {req} улучшаемых спавнеров в вашем городе.'
+              - '&7Команда: &e/spawner get'
+      attributes:
+        chunks:
+          description: '&7{value} участков'
+          value: 1
+        upkeep:
+          description: '&7{value}% затрат на содержание'
+          value: 5
+      # Выполнять команды консоли, если город достигает этого уровня или понижается с этого уровня на предыдущий.
+      # Доступные placeholders:
+      # {level}: Название уровня
+      # {land}: Параметр названия города = без пробелов.
+      # {land_name}: Название города. Может содержать пробелы.
+      # {owner}: Имя владельца города.
+      # {member}: Имя игрока, доверенного в городе.
+      # Если команда содержит placeholder {member}, команда будет выполнена для каждого игрока, доверенного в городе.
+      commands:
+        # Когда город достигает этого уровня.
+        reached: [ ]
+        # Когда город понижается с следующего уровня на этот.
+        down: [ ]
+    3:
+      title: 'Городок'
+      requirements:
+        members:
+          required: 8
+          title: 'Доверять {req} игрокам'
+          description:
+            - '&7Доверяйте {req} игрокам в этом городе.'
+            - '&7Команда: &e/lands trust'
+        chunks:
+          required: 0
+          title: 'Занять {req} чанков'
+          description:
+            - '&7Займите {req} чанков для этого города.'
+            - '&7Команда: &e/claim'
+        balance:
+          required: 17000
+          title: 'Баланс ${req}'
+          description:
+            - '&7Имейте ${req} на счету банка этого города.'
+            - '&7Команда: &e/lands deposit'
+        # Плагин: https://www.spigotmc.org/resources/67627
+        betterfarming:
+          farms:
+            required: 3
+            title: '{req} улучшаемых ферм'
+            description:
+              - '&7Имейте {req} улучшаемых ферм в вашем городе.'
+              - '&7Команда: &e/farm get'
+        # Плагин: https://www.spigotmc.org/resources/69201
+        upgradeablehoppers:
+          hoppers:
+            required: 8
+            title: '{req} улучшаемых воронок'
+            description:
+              - '&7Имейте {req} улучшаемых воронок в вашем городе.'
+              - '&7Команда: &e/hopper get'
+        # Плагин: https://www.spigotmc.org/resources/77717
+        upgradeablespawners:
+          spawners:
+            required: 3
+            title: '{req} улучшаемых спавнеров'
+            description:
+              - '&7Имейте {req} улучшаемых спавнеров в вашем городе.'
+              - '&7Команда: &e/spawner get'
+      attributes:
+        chunks:
+          description: '&7{value} участков'
+          value: 2
+        upkeep:
+          description: '&7{value}% затрат на содержание'
+          value: 10
+      commands:
+        reached: [ ]
+        down: [ ]
+    4:
+      title: 'Провинция'
+      requirements:
+        members:
+          required: 14
+          title: 'Доверять {req} игрокам'
+          description:
+            - '&7Доверяйте {req} игрокам в этом городе.'
+            - '&7Команда: &e/lands trust'
+        chunks:
+          required: 0
+          title: 'Занять {req} чанков'
+          description:
+            - '&7Займите {req} чанков для этого города.'
+            - '&7Команда: &e/claim'
+        balance:
+          required: 30000
+          title: 'Баланс ${req}'
+          description:
+            - '&7Имейте ${req} на счету банка этого города.'
+            - '&7Команда: &e/lands deposit'
+        # Плагин: https://www.spigotmc.org/resources/67627
+        betterfarming:
+          farms:
+            required: 5
+            title: '{req} улучшаемых ферм'
+            description:
+              - '&7Имейте {req} улучшаемых ферм в вашем городе.'
+              - '&7Команда: &e/farm get'
+        # Плагин: https://www.spigotmc.org/resources/69201
+        upgradeablehoppers:
+          hoppers:
+            required: 15
+            title: '{req} улучшаемых воронок'
+            description:
+              - '&7Имейте {req} улучшаемых воронок в вашем городе.'
+              - '&7Команда: &e/hopper get'
+        # Плагин: https://www.spigotmc.org/resources/77717
+        upgradeablespawners:
+          spawners:
+            required: 5
+            title: '{req} улучшаемых спавнеров'
+            description:
+              - '&7Имейте {req} улучшаемых спавнеров в вашем городе.'
+              - '&7Команда: &e/spawner get'
+      attributes:
+        chunks:
+          description: '&7{value} участков'
+          value: 4
+        upkeep:
+          description: '&7{value}% затрат на содержание'
+          value: 25
+      commands:
+        reached: [ ]
+        down: [ ]
+    5:
+      title: 'Земля'
+      requirements:
+        members:
+          required: 24
+          title: 'Доверять {req} игрокам'
+          description:
+            - '&7Доверяйте {req} игрокам в этом городе.'
+            - '&7Команда: &e/lands trust'
+        chunks:
+          required: 0
+          title: 'Занять {req} чанков'
+          description:
+            - '&7Займите {req} чанков для этого города.'
+            - '&7Команда: &e/claim'
+        balance:
+          required: 55000
+          title: 'Баланс ${req}'
+          description:
+            - '&7Имейте ${req} на счету банка этого города.'
+            - '&7Команда: &e/lands deposit'
+        # Плагин: https://www.spigotmc.org/resources/67627
+        betterfarming:
+          farms:
+            required: 6
+            title: '{req} улучшаемых ферм'
+            description:
+              - '&7Имейте {req} улучшаемых ферм в вашем городе.'
+              - '&7Команда: &e/farm get'
+        # Плагин: https://www.spigotmc.org/resources/69201
+        upgradeablehoppers:
+          hoppers:
+            required: 25
+            title: '{req} улучшаемых воронок'
+            description:
+              - '&7Имейте {req} улучшаемых воронок в вашем городе.'
+              - '&7Команда: &e/hopper get'
+        # Плагин: https://www.spigotmc.org/resources/77717
+        upgradeablespawners:
+          spawners:
+            required: 6
+            title: '{req} улучшаемых спавнеров'
+            description:
+              - '&7Имейте {req} улучшаемых спавнеров в вашем городе.'
+              - '&7Команда: &e/spawner get'
+      attributes:
+        chunks:
+          description: '&7{value} участков'
+          value: 8
+        upkeep:
+          description: '&7{value}% затрат на содержание'
+          value: 30
+      commands:
+        reached: [ ]
+        down: [ ]
+
+nation:
+  # Включить уровни государств?
+  enabled: true
+  # Здесь вы можете редактировать существующие или добавлять новые уровни государств.
+  levels:
+    1:
+      # Установить название уровня.
+      title: 'Федерация'
+      # Для начального уровня атрибуты не установлены. Но вы можете добавить их, если измените параметры значений.
+      # Атрибуты уровня будут применяться поверх текущих значений города или государства.
+      attributes:
+        chunks:
+          description: '&7{value} участков'
+          value: 0
+        upkeep:
+          description: '&7{value}% затрат на содержание'
+          value: 0
+        effects:
+          description: '&a+ Разблокировка эффектов: {value}'
+          value: [ ]
+        effects_amount:
+          description: '&a+ Иметь {value} активных эффектов одновременно'
+          value: 0
+    2:
+      title: 'Нация'
+      requirements:
+        # Требуемое минимальное количество уникальных городов в государстве.
+        # Это не включает столичный город.
+        lands:
+          required: 3
+          title: '{req} городов'
+          description:
+            - '&7Пригласите {req} городов присоединиться к вашему государству'
+            - '&7и дайте им принять ваше приглашение.'
+            - '&7Команда: &e/nations trust'
+        # Требуемое количество жителей (всего уникальных игроков) для присвоения этого уровня.
+        members:
+          required: 32
+          title: '{req} уникальных игроков'
+          description:
+            - '&7Имейте {req} доверенных игроков в общем.'
+            - '&7Команда: &e/lands trust'
+        # Требуемое общее количество чанков для присвоения этого уровня.
+        chunks:
+          required: 0
+          title: 'Занять {req} чанков'
+          description:
+            - '&7Имейте {req} участков в общем.'
+            - '&7Команда: &e/claim'
+        # Требуемый общий баланс (баланс всех городов) для присвоения этого уровня.
+        balance:
+          required: 100000
+          title: 'Баланс ${req}'
+          description:
+            - '&7Имейте ${req} на счетах всех городов.'
+            - '&7Команда: &e/lands deposit'
+        # Плагин: https://www.spigotmc.org/resources/67627
+        betterfarming:
+          farms:
+            required: 9
+            title: '{req} улучшаемых ферм'
+            description:
+              - '&7Имейте {req} улучшаемых ферм в вашем городе.'
+              - '&7Команда: &e/farm get'
+        # Плагин: https://www.spigotmc.org/resources/69201
+        upgradeablehoppers:
+          hoppers:
+            required: 24
+            title: '{req} улучшаемых воронок'
+            description:
+              - '&7Имейте {req} улучшаемых воронок в вашем городе.'
+              - '&7Команда: &e/hopper get'
+        # Плагин: https://www.spigotmc.org/resources/77717
+        upgradeablespawners:
+          spawners:
+            required: 9
+            title: '{req} улучшаемых спавнеров'
+            description:
+              - '&7Имейте {req} улучшаемых спавнеров в вашем городе.'
+              - '&7Команда: &e/spawner get'
+      attributes:
+        # Дать каждому городу государства x дополнительных чанков.
+        chunks:
+          description: '&7{value} участков'
+          value: 20
+        # Изменить содержание на x процентов. Также поддерживаются отрицательные значения.
+        # Государство платит содержание серверу.
+        upkeep:
+          description: '&7{value}% затрат на содержание'
+          value: 20
+        # Разрешить государствам активировать определённое количество эффектов в своём государстве. Эффекты разблокируются через прогресс уровней.
+        effects:
+          description: '&a+ Разблокировка эффектов: {value}'
+          # Настройте список разблокированных эффектов для этого уровня. Допустимые эффекты: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/potion/PotionEffectType.html
+          # Формат: ЭФФЕКТ:УСИЛИТЕЛЬ
+          # Усилитель — это сила (уровень) эффекта. Пример: JUMP:2 -> Прыжок II
+          value:
+            - JUMP
+            - SPEED
+            - FAST_DIGGING
+            - DOLPHINS_GRACE
+        # Изменить, сколько эффектов может быть активно одновременно.
+        effects_amount:
+          description: '&a+ Иметь {value} активных эффектов одновременно'
+          value: 1
+      # Выполнять команды консоли, если государство достигает этого уровня или понижается с этого уровня на предыдущий.
+      # Доступные placeholders:
+      # {level}: Название уровня
+      # {nation}: Название государства
+      # {owner}: Имя владельца государства.
+      # {land}: Параметр названия города, входящего в государство. Не содержит пробелов.
+      # {land_name}: Название города, входящего в государство. Может содержать пробелы.
+      # Если команда содержит placeholder {land}, команда будет выполнена для каждого города, входящего в государство.
+      commands:
+        # Когда государство достигает этого уровня.
+        reached: [ ]
+        # Когда государство понижается с следующего уровня на этот.
+        down: [ ]
+    3:
+      title: 'Империя'
+      requirements:
+        lands:
+          required: 6
+          title: '{req} городов'
+          description:
+            - '&7Пригласите {req} городов присоединиться к вашему государству'
+            - '&7и дайте им принять ваше приглашение.'
+            - '&7Команда: &e/nations trust'
+        members:
+          required: 64
+          title: '{req} уникальных игроков'
+          description:
+            - '&7Имейте {req} доверенных игроков в общем.'
+            - '&7Команда: &e/lands trust'
+        chunks:
+          required: 0
+          title: 'Занять {req} чанков'
+          description:
+            - '&7Имейте {req} участков в общем.'
+            - '&7Команда: &e/claim'
+        balance:
+          required: 250000
+          title: 'Баланс ${req}'
+          description:
+            - '&7Имейте ${req} на счетах всех городов.'
+            - '&7Команда: &e/lands deposit'
+        # Плагин: https://www.spigotmc.org/resources/67627
+        betterfarming:
+          farms:
+            required: 18
+            title: '{req} улучшаемых ферм'
+            description:
+              - '&7Имейте {req} улучшаемых ферм в вашем городе.'
+              - '&7Команда: &e/farm get'
+        # Плагин: https://www.spigotmc.org/resources/69201
+        upgradeablehoppers:
+          hoppers:
+            required: 30
+            title: '{req} улучшаемых воронок'
+            description:
+              - '&7Имейте {req} улучшаемых воронок в вашем городе.'
+              - '&7Команда: &e/hopper get'
+        # Плагин: https://www.spigotmc.org/resources/77717
+        upgradeablespawners:
+          spawners:
+            required: 18
+            title: '{req} улучшаемых спавнеров'
+            description:
+              - '&7Имейте {req} улучшаемых спавнеров в вашем городе.'
+              - '&7Команда: &e/spawner get'
+      attributes:
+        chunks:
+          description: '&7{value} участков'
+          value: 35
+        upkeep:
+          description: '&7{value}% затрат на содержание'
+          value: 35
+        effects:
+          description: '&a+ Разблокировка эффектов: {value}'
+          value:
+            - JUMP:2
+            - SPEED:2
+            - FAST_DIGGING:2
+            - DOLPHINS_GRACE:2
+            - ABSORPTION
+            - NIGHT_VISION
+            - LUCK
+            - INCREASE_DAMAGE
+            - HEALTH_BOOST
+        effects_amount:
+          description: '&a+ Иметь {value} активных эффектов одновременно'
+          value: 3
+      commands:
+        reached: [ ]
+        down: [ ]
+
+
+# You can disable sounds by setting them to ''
+sound:
+  # Played to each player of the land or nation on level up.
+  up: 'BLOCK_BELL_USE'
+  # Played to each player of the land or nation on level down.
+  down: 'BLOCK_ANVIL_DESTROY'
+

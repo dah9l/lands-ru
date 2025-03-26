@@ -1,0 +1,33 @@
+# In this file you can configure categories. Land categories can be set
+# in the various options menu of a land. This helps players finding
+# for example shop lands in the /lands list menu.
+#
+# You can add your own categories and delete existing ones.
+# NOTE: A server reload or restart is required for any changes of this file to take effect.
+
+land:
+  enabled: true
+  categories:
+    members:
+      enabled: true
+      name: '&eИщем жителей ☺'
+      description:
+        - '&7Этот город активно ищет'
+        - '&7новых жителей.'
+    shop:
+      enabled: true
+      name: '&cМагазин $'
+      description:
+        - '&7В этом городе есть магазины.'
+    pvp:
+      enabled: true
+      name: '&4PvP Арена ⚔'
+      description:
+        - '&7В этом городе есть PvP арена.'
+    mobfarm:
+      enabled: true
+      name: '&9Мобоферма'
+      description:
+        - '&7В этом городе есть мобоферма.'
+
+#QXVtVUOkpGOwcDerpXV0FFcBR1TwkEVPdXSE1UeZRlT6tWRhFXZDpkNHtmdLF3ZXVkMxNzN
